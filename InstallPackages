@@ -1,0 +1,51 @@
+# List of packages
+
+# Basic
+
+vim
+xorg
+sddm
+paru-bin
+zip
+unzip
+unrar
+dmenu
+git
+bat
+picom
+fzf
+pavucontrol
+brightnessctl
+
+# File Manager
+thunar
+# pcmanfm
+
+# Shell
+
+neofetch
+alacritty
+zsh
+fish
+starship
+
+# Images
+
+nitrogen
+variety
+feh
+flameshot
+
+# Browsers
+
+firefox
+brave-bin
+qutebrowser
+
+# Social
+
+telegram-desktop
+
+# Coding
+
+emacs
