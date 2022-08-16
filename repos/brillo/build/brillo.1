@@ -1,0 +1,306 @@
+.nh
+.TH brillo(1)
+Cameron Nemo
+OCTOBER 2018
+
+.SH NAME
+.PP
+brillo - control the brightness of backlight and keyboard LED devices
+
+
+.SH SYNOPSIS
+.PP
+\fBbrillo\fP [\fBoperation\fP [\fIvalue\fP]] [\fB-k\fP] [\fB-q\fP|\fB-r\fP] [\fB-m\fP|\fB-c\fP] [\fB-e\fP|\fB-s\fP \fIctrl\fP] [\fB-u\fP \fIusecs\fP] [\fB-v\fP \fIloglevel\fP]
+
+
+.SH DESCRIPTION
+.PP
+\fBbrillo\fP is a tool for controlling the brightness of backlight
+and LED devices on Linux. Notable features include:
+
+.RS
+.IP \(bu 2
+Automatic best controller detection
+.IP \(bu 2
+Smooth transitions and exponential (natural) adjustments
+.IP \(bu 2
+Ability to save and restore brightness across boots
+.IP \(bu 2
+Directly using \fBsysfs\fP to set brightness without relying on X
+.IP \(bu 2
+Unprivileged access with no new setuid binaries
+.IP \(bu 2
+Containment with AppArmor
+
+.RE
+
+
+.SH OPTIONS
+.PP
+\fIOperations\fP
+
+.RS
+.IP \(bu 2
+\fB-G\fP:	Get brightness value (default)
+.IP \(bu 2
+\fB-S\fP \fIVALUE\fP:	Set brightness to value
+.IP \(bu 2
+\fB-A\fP \fIVALUE\fP:	Increment brightness by given value
+.IP \(bu 2
+\fB-U\fP \fIVALUE\fP:	Decrement brightness by given value
+.IP \(bu 2
+\fB-O\fP:	Store the current brightness
+.IP \(bu 2
+\fB-I\fP:	Restore cached brightness
+.IP \(bu 2
+\fB-L\fP:	List available devices
+.IP \(bu 2
+\fB-H\fP:	Show a short help output
+.IP \(bu 2
+\fB-V\fP:	Report the version
+
+.RE
+
+.PP
+\fIControllers\fP
+
+.PP
+The default controller is automatically selected to maximize precision.
+To select every controller available, use the \fB-e\fP option.
+To select a specific controller, use the \fB-s\fP option.
+
+.RS
+.IP \(bu 2
+\fB-a\fP:	Automatic controller selection (default)
+.IP \(bu 2
+\fB-e\fP:	Operate on every controller available
+.IP \(bu 2
+\fB-s\fP \fICONTROLLER\fP:	Manual controller selection
+
+.RE
+
+.PP
+The list operation (\fB-L\fP) can be used to discover available controllers.
+
+.PP
+\fITargets\fP
+
+.PP
+By default, \fBbrillo\fP acts on the display devices, but the \fB-k\fP option
+can be used to adjust keyboard backlights instead. In either case, it may be
+necessary to specify an alternative controller.
+
+.RS
+.IP \(bu 2
+\fB-l\fP:	Act on display backlight (default)
+.IP \(bu 2
+\fB-k\fP:	Act on keyboard backlight and LEDs
+
+.RE
+
+.PP
+\fIFields\fP
+
+.PP
+By default, \fBbrillo\fP acts on the brightness property. With these options,
+the maximum brightness of a controller can be retrieved. In addition, it is
+possible to set (or retrieve) a minimum cap, which is used to prevent
+lowering the brightness beyond a certain threshold. This is especially
+useful for devices that become pitch black when the brightness is set to 0.
+
+.RS
+.IP \(bu 2
+\fB-b\fP:	Current brightness (default)
+.IP \(bu 2
+\fB-m\fP:	Maximum brightness
+.IP \(bu 2
+\fB-c\fP:	Minimum brightness
+
+.RE
+
+.PP
+\fIValue modes\fP
+
+.PP
+Values may be given, or presented, in percent or raw mode.
+
+.PP
+The default value mode is linear percentages, however the \fB-q\fP option
+can be used for exponential percentages. Exponential mode offers a more
+natural and gradual brightness scale.
+
+.PP
+Raw mode will use the same format and range given by the device driver;
+this mode is most useful when a high degree of precision is required,
+such as for keyboard controllers.
+
+.RS
+.IP \(bu 2
+\fB-p\fP:	Linear percentages (default)
+.IP \(bu 2
+\fB-q\fP:	Exponential percentages
+.IP \(bu 2
+\fB-r\fP:	Raw values
+
+.RE
+
+.PP
+\fISmooth adjustment\fP
+
+.PP
+\fBbrillo\fP is capable of gradually adjusting the brightness over a specified
+time period. Use the \fB-u\fP \fImicroseconds\fP option to specify how long the operation
+should take. This flag is silently ignored when not setting the brightness.
+
+.RS
+.IP \(bu 2
+\fB-u\fP \fImicroseconds\fP:	time used to space the operation out
+
+.RE
+
+.PP
+\fIVerbosity\fP
+
+.PP
+By default, \fBbrillo\fP outputs only warnings or more severe messages.
+To enable more verbose logs on \fBstderr\fP, use the verbosity argument:
+\fB-v\fP \fIloglevel\fP\&.
+The loglevel is a value between 0 and 8 (corresponding to syslog severities).
+
+
+.SH EXAMPLES
+.PP
+Get the current brightness in percent:
+
+.PP
+.RS
+
+.nf
+brillo [-G]
+
+.fi
+.RE
+
+.PP
+Increase brightness by 5 percent:
+
+.PP
+.RS
+
+.nf
+brillo -A 5
+
+.fi
+.RE
+
+.PP
+Specify the controller to use:
+
+.PP
+.RS
+
+.nf
+brillo -s intel_backlight -A 5
+
+.fi
+.RE
+
+.PP
+Set the brightness to 50% for every controller:
+
+.PP
+.RS
+
+.nf
+brillo -e -S 50
+
+.fi
+.RE
+
+.PP
+Retrieve or increase the brightness using an exponential scale:
+
+.PP
+.RS
+
+.nf
+brillo -q
+brillo -q -A 5
+
+.fi
+.RE
+
+.PP
+Decrease the brightness and smooth the operation over 1500 microseconds:
+
+.PP
+.RS
+
+.nf
+brillo -u 150000 -U 5
+
+.fi
+.RE
+
+.PP
+Get the raw maximum brightness value:
+
+.PP
+.RS
+
+.nf
+brillo -rm
+
+.fi
+.RE
+
+.PP
+Set the minimum cap for the \fIacpi_video0\fP controller to a raw value of 2:
+
+.PP
+.RS
+
+.nf
+brillo -rc -s acpi_video0 -S 2
+
+.fi
+.RE
+
+.PP
+\fINote\fP: subsequent attempts to set the controller's brightness to a raw value less than 2 will then be raised to this minimum threshold.
+
+.PP
+List keyboard controllers:
+
+.PP
+.RS
+
+.nf
+brillo -Lk
+
+.fi
+.RE
+
+.PP
+Activate a specific controller LED:
+
+.PP
+.RS
+
+.nf
+brillo -k -s "input15::scrolllock" -S 100
+
+.fi
+.RE
+
+.PP
+\fINote\fP: LEDs often only take 0 or 1 in raw value (i.e. for off/on). In these cases, you can use any non-zero value instead of 100.
+
+
+.SH COPYRIGHT
+.PP
+Copyright (C) 2018-2019 Cameron Nemo, 2014 Fredrik Haikarainen
+
+.PP
+This is free software, see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE

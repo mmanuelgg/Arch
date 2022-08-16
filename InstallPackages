@@ -1,31 +1,49 @@
 # List of packages
 
+# Desktop
+
+xorg
+qtile
+xmonad
+sddm
+plasma-desktop
+picom
+
 # Basic
 
 vim
-xorg
-sddm
+network-manager
 paru-bin
 zip
 unzip
 unrar
 dmenu
+rofi
+nwg-launchers
 git
 bat
-picom
 fzf
 pavucontrol
 brightnessctl
+dunst
+fcitx5
+fcitx5-configtool
+fcitx5-mozc-ut-full
+#mozc-ut-full-common
+gammy
 
 # File Manager
+
 thunar
-# pcmanfm
+pcmanfm
+dolphin
 
 # Shell
 
 neofetch
 alacritty
-zsh
+xterm
+kitty
 fish
 starship
 
@@ -36,16 +54,50 @@ variety
 feh
 flameshot
 
+# Multimedia
+
+mpv
+vlc
+obs-studio
+steam
+lutris
+heroic
+retroarch
+
+# Application Managers
+
+flatpak
+snapd
+
 # Browsers
 
 firefox
-brave-bin
 qutebrowser
 
 # Social
 
 telegram-desktop
+discord
 
 # Coding
 
 emacs
+
+# Razer
+
+razercfg
+polychromatic
+razergenie
+#razercommander
+
+# Flatpak
+
+#fcitx5
+
+# Snap
+
+snap-store
+
+# Miscelaneo
+
+calibre

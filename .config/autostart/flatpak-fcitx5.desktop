@@ -1,0 +1,5 @@
+[Desktop Entry]
+Type=Application
+Name=fcitx5
+Exec=flatpak run org.fcitx.Fcitx5
+Terminal=false

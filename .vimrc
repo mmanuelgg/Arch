@@ -1,5 +1,10 @@
 "" General
-colorscheme elflord
+packadd! dracula        " Dracula colorscheme need download
+syntax enable           " enable instead of on to keep colorscheme
+colorscheme dracula
+" Enable transparency
+hi Normal guibg=NONE ctermbg=NONE
+""set background=dark
 filetype on
 filetype plugin on
 filetype indent on
@@ -43,4 +48,4 @@ set statusline+=%=
 set statusline+=\ ascii:\ %b\ hex:\ 0x%B\ row:\ %l\ col:\ %c\ percent:\ %p%%
 set laststatus=2
 
-syntax on
+
