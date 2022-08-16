@@ -637,7 +637,7 @@ def init_widgets_list():
         ),
 
         widget.Wallpaper(
-            directory='~/wallpapers',
+            directory='~/wallpapers/all-selected',
             wallpaper_command=['nitrogen', '--head=0', '--set-zoom-fill', '--random'],
             label='\ue0b7   ',
             foreground=dracula_colors[4]
@@ -843,7 +843,7 @@ def init_widgets_list2():
 
 
         widget.Wallpaper(
-            directory='~/wallpapers',
+            directory='~/wallpapers/all-selected',
             wallpaper_command=['nitrogen', '--head=1',
                                '--set-zoom-fill', '--random'],
             label=' \ue0b7    ',

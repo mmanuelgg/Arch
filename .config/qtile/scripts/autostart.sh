@@ -38,7 +38,7 @@ run emacs --daemon &
 
 #run variety &
 
-feh --randomize --bg-fill ~/wallpapers/*
+feh --randomize --bg-fill ~/wallpapers/all-selected*
 
 run redshift-gtk &
 
