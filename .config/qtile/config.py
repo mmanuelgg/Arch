@@ -143,7 +143,8 @@ keys = [
 
     # Social
     KeyChord([mod], "s", [
-        Key([], "d", lazy.spawn('discord-canary')),
+        Key([], "d", lazy.spawn('discord')),
+        Key([], "c", lazy.spawn('discord-canary')),
         Key([], "t", lazy.spawn('thunderbird')),
         Key([], "e", lazy.spawn('evolution')),
         Key([], "m", lazy.spawn('element-desktop')),
