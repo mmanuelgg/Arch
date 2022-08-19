@@ -49,3 +49,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+;; Haskell packages
+
+(add-hook 'haskell-mode-hook 'hlint-refactor-mode)
+;(add-hook 'haskell-mode-hook 'hindent-mode)

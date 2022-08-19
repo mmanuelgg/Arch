@@ -93,3 +93,7 @@
 
 ;; Relative numbers
 (setq display-line-numbers-type 'relative)
+
+;; LaTeX Panel
+(require 'latex-preview-pane)
+(latex-preview-pane-enable)
