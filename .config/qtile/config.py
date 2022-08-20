@@ -30,7 +30,7 @@ import re
 import socket
 import subprocess
 from typing import List  # noqa: F401
-from libqtile import layout, bar, widget, hook, qtile
+from libqtile import layout, bar, widget, hook, qtile, extension
 from libqtile.config import Click, Drag, Group, Key, Match, Screen, Rule, KeyChord
 from libqtile.command import lazy
 
@@ -62,6 +62,22 @@ def window_to_next_group(qtile):
 myTerm = "alacritty"  # My terminal of choice
 terminal = "kitty"
 
+def dracula_colors():
+    return [["#282a36", "#282a36"],  # 0 Background
+            ["#f8f8f2", "#f8f8f2"],  # 1 Foreground
+            ["#44475a", "#44475a"],  # 2 Current Line and Selection
+            ["#6272a4", "#6272a4"],  # 3 Comment
+            ["#8be9fd", "#8be9fd"],  # 4 Cyan
+            ["#ffb86c", "#ffb86c"],  # 5 Orange
+            ["#ff79c6", "#ff79c6"],  # 6 Pink
+            ["#bd93f9", "#bd93f9"],  # 7 Purple
+            ["#50fa7b", "#50fa7b"],  # 8 Green
+            ["#ff5555", "#ff5555"],  # 9 Red
+            ["#f1fa8c", "#f1fa8c"]]  # 10 Yellow
+
+
+dracula_colors = dracula_colors()
+
 keys = [
 
 
@@ -75,6 +91,12 @@ keys = [
     Key([mod], "Return", lazy.spawn('kitty')),
     Key([mod], "KP_Enter", lazy.spawn('kitty')),
     Key([mod], "t", lazy.spawn('telegram-desktop')),
+    Key([mod], "p", lazy.spawncmd()),
+    Key([mod], "w", lazy.run_extension(extension.WindowList(
+            dmenu_font='UbuntuMono Nerd Font:bold:size=14',
+            dmenu_command="dmenu -i -nb '#282a36' -nf '#f8f8f2' -sb '#44475a' -sf '#bd93f9'",
+            dmenu_ignorecase=True,
+        ))),
 
     # SUPER + SHIFT KEYS
 
@@ -234,6 +256,10 @@ keys = [
     Key([mod], "period", lazy.next_screen()),
     Key([mod], "comma", lazy.prev_screen()),
 
+    # WINDOW MINIMIZE
+
+    Key([mod, "control"], "m", lazy.window.toggle_minimize()),
+
     # RESIZE UP, DOWN, LEFT, RIGHT
     Key([mod, "control"], "l",
         lazy.layout.grow_right(),
@@ -355,23 +381,6 @@ for i in groups:
         # MOVE WINDOW TO SELECTED WORKSPACE 1-10 AND FOLLOW MOVED WINDOW TO WORKSPACE
         Key([mod, "shift"], i.name, lazy.window.togroup(i.name), lazy.group[i.name].toscreen()),
     ])
-
-
-def dracula_colors():
-    return [["#282a36", "#282a36"],  # 0 Background
-            ["#f8f8f2", "#f8f8f2"],  # 1 Foreground
-            ["#44475a", "#44475a"],  # 2 Current Line and Selection
-            ["#6272a4", "#6272a4"],  # 3 Comment
-            ["#8be9fd", "#8be9fd"],  # 4 Cyan
-            ["#ffb86c", "#ffb86c"],  # 5 Orange
-            ["#ff79c6", "#ff79c6"],  # 6 Pink
-            ["#bd93f9", "#bd93f9"],  # 7 Purple
-            ["#50fa7b", "#50fa7b"],  # 8 Green
-            ["#ff5555", "#ff5555"],  # 9 Red
-            ["#f1fa8c", "#f1fa8c"]]  # 10 Yellow
-
-
-dracula_colors = dracula_colors()
 
 
 def init_layout_theme():
@@ -566,6 +575,8 @@ def init_widgets_list():
 #           objname="org.mpris.MediaPlayer2.spotify",
 #       ),
 
+        widget.Prompt(),
+
         widget.TextBox(
             fmt=' \ue777 ',
             fontsize=24,
@@ -618,7 +629,7 @@ def init_widgets_list():
             foreground=dracula_colors[4],
             background=dracula_colors[0],
             #fontsize = 14,
-            format="\ue0b7    %A %d/%m/%Y"
+            format="\ue0b7    %a %d/%m/%Y"
         ),
 
         widget.WidgetBox(
@@ -811,7 +822,7 @@ def init_widgets_list2():
             foreground=dracula_colors[4],
             background=dracula_colors[0],
             #fontsize = 14,
-            format="\ue0b7    %A %d/%m/%Y"
+            format="\ue0b7    %a %d/%m/%Y"
         ),
 
 #       widget.WidgetBox(
