@@ -623,14 +623,14 @@ def init_widgets_list():
 
         widget.WidgetBox(
             foreground=dracula_colors[7],
-            text_open=' \ufc96',
-            text_closed='\ue0b7 \ufc95',
+            text_open=' \uf101',
+            text_closed='\ue0b7 \uf2dc',
             close_button_location='right',
             widgets=[
                 widget.OpenWeather(
                     foreground=dracula_colors[7],
                     background=dracula_colors[0],
-                    format="\ue0b7 \uf2c7 {main_temp}º{units_temperature} {location_city} {icon} ",
+                    format="\ue0b7 \uf2c7 {main_temp}º{units_temperature} {icon} ", # {location_city}
                     languaje='es',
                     location='Marbella,ES'
                 ),
@@ -667,7 +667,7 @@ def init_widgets_list():
         ),
 
         widget.QuickExit(
-            default_text=' \uf842 ',
+            default_text=' \uf011',
             countdown_format='[{}]',
             foreground=dracula_colors[7]
         ),
@@ -814,33 +814,33 @@ def init_widgets_list2():
             format="\ue0b7    %A %d/%m/%Y"
         ),
 
-        widget.WidgetBox(
-            foreground=dracula_colors[7],
-            text_open=' \ufc96',
-            text_closed='\ue0b7 \ufc95',
-            close_button_location='right',
-            widgets=[
+#       widget.WidgetBox(
+#           foreground=dracula_colors[7],
+#           text_open=' \ufc96',
+#           text_closed='\ue0b7 \ufc95',
+#           close_button_location='right',
+#           widgets=[
 
-                widget.Battery(
-                    foreground=dracula_colors[8],
-                    background=dracula_colors[0],
-                    format='\ue0b7 {char} {percent:2.0%} {hour:d}:{min:02d} ',
-                    charge_char='C',
-                    discharge_char='D',
-                    unknown_char='F',
-                    hide_threshold=0.9,
-                    low_foreground=dracula_colors[9],
-                    update_interval=60
-                ),
+#               widget.Battery(
+#                   foreground=dracula_colors[8],
+#                   background=dracula_colors[0],
+#                   format='\ue0b7 {char} {percent:2.0%} {hour:d}:{min:02d} ',
+#                   charge_char='C',
+#                   discharge_char='D',
+#                   unknown_char='F',
+#                   hide_threshold=0.9,
+#                   low_foreground=dracula_colors[9],
+#                   update_interval=60
+#               ),
 
-                widget.Wttr(
-                    location={'Marbella, Spain': '\ue0b7 '},
-                    lang='es',
-                    foreground=dracula_colors[7],
-                    format=' %l %c %t  '
-                ),
-            ]
-        ),
+#               widget.Wttr(
+#                   location={'Marbella, Spain': '\ue0b7 '},
+#                   lang='es',
+#                   foreground=dracula_colors[7],
+#                   format=' %l %c %t  '
+#               ),
+#           ]
+#       ),
 
 
         widget.Wallpaper(
@@ -911,13 +911,13 @@ async def assign_app_group(client):
               "obs", "obs-studio" ]
     d["4"] = ["Steam", "Steam-runtime", "Heroic", "Lutris", "Minecraft-launcher", "Itch", "Minigalaxy", "Retroarch",
               "steam", "steam-runtime", "heroic", "lutris", "minecraft-launcher", "itch", "minigalaxy", "retroarch" ]
-    d["5"] = ["Mpv", "Vlc", "Gimp", "Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh",
-              "mpv", "vlc", "gimp", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
+    d["5"] = ["Mpv", "Vlc", "Gimp", "Geeqie", "Inkscape", "Nomacs", "Ristretto", "Nitrogen", "Feh",
+              "mpv", "vlc", "gimp", "geeqie", "inkscape", "nomacs", "ristretto", "nitrogen", "feh", ]
     d["6"] = ["" ]
     d["7"] = ["Telegram-desktop", "Discord", "Element-desktop",
               "telegram-desktop", "discord", "element-desktop", ]
-    d["8"] = ["Clementine", "Spotify", "Pragha", "Deadbeef", "Audacious",
-              "clementine", "spotify", "pragha", "deadbeef", "audacious", ]
+    d["8"] = ["Clementine", "Spotify", "Strawberry", "Deadbeef", "Audacious",
+              "clementine", "spotify", "strawberry", "deadbeef", "audacious", ]
     d["9"] = ["Evolution", "Geary", "Mail", "Thunderbird",
               "evolution", "geary", "mail", "thunderbird" ]
     d["0"] = ["Pcmanfm", "Pcmanfm-qt", "Dolphin", "Thunar",
