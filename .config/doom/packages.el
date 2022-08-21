@@ -49,7 +49,45 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+(package! flycheck-aspell)
+(package! calfw)
+(package! calfw-org)
+(package! dashboard)
+(package! dired-open)
+(package! dired-subtree)
+(package! dmenu)
+(package! elfeed-goodies)
+(package! emojify)
+(package! evil-tutor)
+(package! exwm)
+(package! ivy-posframe)
+(package! mw-thesaurus)
+(package! org-auto-tangle)
+(package! org-web-tools)
+(package! ox-gemini)
+(package! peep-dired)
+(package! password-store)
+(package! rainbow-mode)
+(package! resize-window)
+(package! tldr)
+(package! wc-mode)
+(package! beacon)
+(package! clippy)
+(package! minimap)
+(package! olivetti)
+(package! pdf-tools)
+(package! latex-preview-pane)
+(package! format-all)
+(package! auto-dictionary)
+(package! helm-dictionary)
+
 ;; Haskell packages
 
-(add-hook 'haskell-mode-hook 'hlint-refactor-mode)
+;;(add-hook 'haskell-mode-hook 'hlint-refactor-mode)
 ;(add-hook 'haskell-mode-hook 'hindent-mode)
+
+;; Lean packages
+
+(package! lean4-mode :recipe
+  (:host github
+   :repo "leanprover/lean4-mode"))

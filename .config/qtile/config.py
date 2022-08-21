@@ -181,7 +181,7 @@ keys = [
     # Emacs
     KeyChord([mod], "e", [
         Key([], "e", lazy.spawn("emacsclient -c -a 'emacs'")),
-        Key([], "m", lazy.spawn("emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Música/\")'")),
+        Key([], "m", lazy.spawn("emacsclient -c -a 'emacs' --eval '(emms)' --eval '(emms-play-directory-tree \"~/Música\")'")),
         Key([], "b", lazy.spawn("emacsclient -c -a 'emacs' --eval '(ibuffer)'")),
         Key([], "d", lazy.spawn("emacsclient -c -a 'emacs' --eval '(dired nil)'")),
         Key([], "i", lazy.spawn("emacsclient -c -a 'emacs' --eval '(erc)'")),

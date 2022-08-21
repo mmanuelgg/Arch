@@ -79,6 +79,7 @@
 ;; CONFIGURACION PERSONAL ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+(beacon-mode l)
 ;; Opacidad
 (add-to-list 'default-frame-alist '(alpha . 95))
 
@@ -97,3 +98,7 @@
 ;; LaTeX Panel
 (require 'latex-preview-pane)
 (latex-preview-pane-enable)
+
+;; Haskell
+;(after!
+;  (setq lsp-haskell-formatting-provider "brittany"))
