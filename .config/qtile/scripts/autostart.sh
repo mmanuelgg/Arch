@@ -12,14 +12,21 @@ function run {
 #starting utility applications at boot time
 lxsession &
 run nm-applet &
-#run pamac-tray &
+run pamac-tray &
 numlockx on &
 blueman-applet &
-#flameshot &
+flameshot &
 #picom --config $HOME/.config/picom/picom.conf &
 picom --config .config/picom/picom-blur.conf --experimental-backends &
-#/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
+/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1 &
 dunst &
+(sleep 2s; jgmenu --hide-on-startup) &
+run emacs --daemon &
+feh --randomize --bg-fill ~/wallpapers/all-selected*
+run optimus-manager-qt &
+run redshift-gtk &
+#run flatpak run org.fcitx.Fcitx5 &
+fcitx5 &
 
 #starting user applications at boot time
 run polychromatic-tray-applet
@@ -30,17 +37,3 @@ run polychromatic-tray-applet
 #run dropbox &
 #run insync start &
 #run telegram-desktop &
-#run gammy &
-
-(sleep 2s; jgmenu --hide-on-startup) &
-
-run emacs --daemon &
-
-#run variety &
-
-feh --randomize --bg-fill ~/wallpapers/all-selected*
-
-run redshift-gtk &
-
-#run flatpak run org.fcitx.Fcitx5 &
-fcitx5 &

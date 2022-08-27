@@ -79,7 +79,7 @@
 ;; CONFIGURACION PERSONAL ;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
-(beacon-mode l)
+(beacon-mode 1)
 ;; Opacidad
 (add-to-list 'default-frame-alist '(alpha . 95))
 

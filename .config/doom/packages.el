@@ -1,3 +1,6 @@
+;;; package --- Summary:
+
+;;; Commentary:
 ;; -*- no-byte-compile: t; -*-
 ;;; $DOOMDIR/packages.el
 
@@ -49,6 +52,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;(unpin! t)
 
+;;; Code:
 (package! flycheck-aspell)
 (package! calfw)
 (package! calfw-org)
@@ -88,6 +92,9 @@
 
 ;; Lean packages
 
-(package! lean4-mode :recipe
-  (:host github
-   :repo "leanprover/lean4-mode"))
+;; (package! lean4-mode :recipe
+;;   (:host github
+;;    :repo "leanprover/lean4-mode"))
+
+;; (provide 'packages)
+;; ;;; packages.el ends here
